@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felices 3 Meses Mi Amor 🍒</title>
+    
+    <!-- Tailwind CSS para los estilos modernos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Librerías de React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel para poder leer el código JSX de React desde el archivo JS -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body {
+            /* Fondo Cherry Dark */
+            background: linear-gradient(135deg, #2d0208 0%, #680414 50%, #1a0105 100%);
+            color: #ffe6e6;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Efecto de cristal */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Animación suave de flotación */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Aquí es donde se inyectará todo el diseño de React -->
+    <div id="root"></div>
+
+    <!-- Conexión a tu archivo JavaScript (React) -->
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
