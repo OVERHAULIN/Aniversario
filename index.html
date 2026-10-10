@@ -4,17 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Felices 3 Meses, Mi Amor ❤️</title>
-
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
-
 <!-- Iconos -->
 <script src="https://unpkg.com/lucide@latest"></script>
-
 <!-- Fuentes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --rose: #e11d48;
@@ -22,14 +18,10 @@
   --cherry: #800f2f;
   --dark: #020617;
 }
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 25px;
 }
-
 body {
   margin: 0;
   background: #020617;
@@ -37,20 +29,16 @@ body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
-
 ::selection {
   background: #e11d48;
   color: white;
 }
-
 .background {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(ellipse at top, #0f172a 0%, #3b1024 40%, #020617 100%);
+  background: radial-gradient(ellipse at top, #0f172a 0%, #3b1024 40%, #020617 100%);
 }
-
 .petal-container {
   position: fixed;
   inset: 0;
@@ -58,7 +46,6 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-
 .petal {
   position: absolute;
   top: -80px;
@@ -66,72 +53,87 @@ body {
   animation: falling linear infinite;
   will-change: transform;
 }
-
 @keyframes falling {
-  0% {
-    transform: translate3d(0,-10vh,0) rotate(0deg);
-  }
-  100% {
-    transform: translate3d(var(--drift),115vh,0) rotate(720deg);
-  }
+  0% { transform: translate3d(0,-10vh,0) rotate(0deg); }
+  100% { transform: translate3d(var(--drift),115vh,0) rotate(720deg); }
 }
-
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.12); opacity: .75; }
 }
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 @keyframes equalize {
   0%, 100% { height: 20%; }
   50% { height: 100%; }
 }
-
 @keyframes glow {
   0%,100% { opacity: .45; transform: scale(.95); }
   50% { opacity: .85; transform: scale(1.08); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes shine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
 @keyframes heartbeat {
   0%,100% { transform: scale(1); }
   15%,35% { transform: scale(1.16); }
   25%,45% { transform: scale(1.08); }
 }
 
+/* =========================================================
+   VISTAS Y BOTONES DE NAVEGACIÓN
+========================================================= */
 main {
   position: relative;
   z-index: 2;
   width: min(100% - 48px, 1280px);
   margin: auto;
-  padding: 48px 0;
 }
-
-section { position: relative; }
-
-.hero {
-  min-height: 70vh;
-  display: flex;
+.view {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  animation: fadeIn 1s ease both;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  padding: 40px 0;
+}
+.view.active {
+  display: flex;
+  opacity: 1;
+  animation: fadeIn 0.8s ease forwards;
+}
+.nav-btn {
+  margin-top: 48px;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #e11d48, #9d174d);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: inherit;
+}
+.nav-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(225, 29, 72, 0.5);
 }
 
+/* =========================================================
+   SECCIONES
+========================================================= */
+.hero { text-align: center; }
 .hero-heart {
   display: inline-flex;
   padding: 16px;
@@ -141,7 +143,6 @@ section { position: relative; }
   margin-bottom: 24px;
   backdrop-filter: blur(8px);
 }
-
 .hero-heart svg {
   width: 48px;
   height: 48px;
@@ -149,14 +150,12 @@ section { position: relative; }
   fill: #f43f5e;
   animation: heartbeat 1.8s infinite;
 }
-
 .gradient-title {
   color: transparent;
   background: linear-gradient(130deg,#ffe4e6,#f472b6,#e11d48);
   -webkit-background-clip: text;
   background-clip: text;
 }
-
 .hero h1 {
   font-size: clamp(2.8rem,7vw,5rem);
   line-height: 1.12;
@@ -165,30 +164,14 @@ section { position: relative; }
   margin: 0 0 24px;
   filter: drop-shadow(0 4px 20px rgba(225,29,72,.2));
 }
-
 .hero-description {
   max-width: 720px;
   font-size: clamp(1.05rem,2vw,1.5rem);
   color: rgba(255,228,230,.9);
   font-weight: 300;
   line-height: 1.8;
+  margin: auto;
 }
-
-.scroll-hint {
-  position: absolute;
-  bottom: 15px;
-  color: rgba(251,113,133,.65);
-  animation: bounce 2s infinite;
-  font-size: .9rem;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 48px;
-  margin: 8px auto 0;
-  background: linear-gradient(to bottom,rgba(251,113,133,.6),transparent);
-}
-
 .section-title {
   text-align: center;
   font-size: clamp(2rem,4vw,2.7rem);
@@ -197,8 +180,7 @@ section { position: relative; }
   line-height: 1.25;
 }
 
-.music-section { padding: 80px 0; }
-
+/* MÚSICA */
 .music-card {
   position: relative;
   width: min(100%,448px);
@@ -208,19 +190,14 @@ section { position: relative; }
   background: linear-gradient(90deg,rgba(244,63,94,.4),rgba(217,70,239,.3));
   border: 1px solid rgba(255,255,255,.1);
   box-shadow: 0 25px 50px -12px rgba(0,0,0,.6);
-  transition: transform .3s;
   backdrop-filter: blur(12px);
 }
-
-.music-card:hover { transform: translateY(-5px); }
-
 .music-inner {
   background: rgba(0,0,0,.45);
   border-radius: 22px;
-  padding: 24px;
+  padding: 32px 24px;
   text-align: center;
 }
-
 .music-heading {
   display: flex;
   align-items: center;
@@ -232,9 +209,8 @@ section { position: relative; }
   text-transform: uppercase;
   margin-bottom: 24px;
 }
-
 .album {
-  height: 128px;
+  height: 140px;
   border-radius: 16px;
   margin-bottom: 24px;
   display: flex;
@@ -245,14 +221,12 @@ section { position: relative; }
   box-shadow: inset 0 2px 10px #0004;
   transition: background .5s;
 }
-
 .album::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,.2);
 }
-
 .album-heart {
   position: relative;
   z-index: 2;
@@ -261,7 +235,6 @@ section { position: relative; }
   color: white;
   fill: rgba(255,255,255,.3);
 }
-
 .equalizer {
   position: relative;
   z-index: 2;
@@ -270,7 +243,6 @@ section { position: relative; }
   gap: 8px;
   height: 48px;
 }
-
 .equalizer span {
   width: 12px;
   height: 20%;
@@ -278,27 +250,22 @@ section { position: relative; }
   border-radius: 4px 4px 0 0;
   animation: equalize .8s ease-in-out infinite;
 }
-
 .equalizer span:nth-child(2) { animation-delay: .1s; }
 .equalizer span:nth-child(3) { animation-delay: .2s; }
 .equalizer span:nth-child(4) { animation-delay: .3s; }
 .equalizer span:nth-child(5) { animation-delay: .4s; }
-
 .song-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 4px;
 }
-
 .song-artist { color: #fecdd3; margin: 0 0 24px; }
-
 .music-controls {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
 }
-
 .control-button {
   display: flex;
   align-items: center;
@@ -311,9 +278,7 @@ section { position: relative; }
   cursor: pointer;
   transition: .2s;
 }
-
 .control-button:hover { background: rgba(255,255,255,.1); }
-
 .play-button {
   width: 64px;
   height: 64px;
@@ -321,14 +286,9 @@ section { position: relative; }
   color: white;
   box-shadow: 0 8px 25px rgba(225,29,72,.3);
 }
+.play-button:hover { background: #f43f5e; transform: scale(1.05); }
 
-.play-button:hover {
-  background: #f43f5e;
-  transform: scale(1.05);
-}
-
-.interests { padding: 96px 0; }
-
+/* PASIONES */
 .interest-grid {
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
@@ -336,9 +296,8 @@ section { position: relative; }
   max-width: 1024px;
   margin: auto;
 }
-
 .passion-card {
-  min-height: 300px;
+  min-height: 320px;
   position: relative;
   overflow: hidden;
   border-radius: 24px;
@@ -347,9 +306,7 @@ section { position: relative; }
   transition: transform .35s;
   transform-style: preserve-3d;
 }
-
 .passion-card:hover { transform: scale(1.03) rotateY(3deg); }
-
 .passion-card::before {
   content: "";
   position: absolute;
@@ -357,20 +314,16 @@ section { position: relative; }
   background: rgba(0,0,0,.4);
   transition: background .5s;
 }
-
 .passion-card:hover::before { background: rgba(0,0,0,.2); }
-
 .passion-content {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 300px;
   justify-content: flex-end;
   padding: 32px;
 }
-
 .passion-icon {
   width: 48px;
   height: 48px;
@@ -378,21 +331,18 @@ section { position: relative; }
   color: rgba(255,255,255,.9);
   filter: drop-shadow(0 2px 5px #0006);
 }
-
 .passion-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 8px;
   text-shadow: 0 3px 8px #0007;
 }
-
 .passion-card h4 {
   font-size: 1.05rem;
   font-weight: 500;
   color: rgba(255,255,255,.8);
   margin: 0 0 16px;
 }
-
 .passion-card p {
   font-size: .875rem;
   line-height: 1.7;
@@ -402,33 +352,12 @@ section { position: relative; }
   transform: translateY(16px);
   transition: all .3s;
 }
+.passion-card:hover p { opacity: 1; transform: translateY(0); }
+.violet-card { background: linear-gradient(135deg,rgba(124,58,237,.65),rgba(112,26,117,.8)); }
+.orange-card { background: linear-gradient(135deg,rgba(249,115,22,.65),rgba(127,29,29,.8)); }
+.green-card { background: linear-gradient(135deg,rgba(16,185,129,.55),rgba(19,78,74,.8)); }
 
-.passion-card:hover p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.violet-card {
-  background: linear-gradient(135deg,rgba(124,58,237,.65),rgba(112,26,117,.8));
-}
-.orange-card {
-  background: linear-gradient(135deg,rgba(249,115,22,.65),rgba(127,29,29,.8));
-}
-.green-card {
-  background: linear-gradient(135deg,rgba(16,185,129,.55),rgba(19,78,74,.8));
-}
-
-.gift-section {
-  padding: 96px 0;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.gift-section .section-title { margin-bottom: 64px; }
-
+/* REGALO */
 .gift-box {
   position: relative;
   cursor: pointer;
@@ -437,8 +366,8 @@ section { position: relative; }
   color: white;
   font-family: inherit;
   animation: bounce 2s ease-in-out infinite;
+  margin-bottom: 20px;
 }
-
 .gift-glow {
   position: absolute;
   inset: -40px;
@@ -447,7 +376,6 @@ section { position: relative; }
   filter: blur(45px);
   animation: glow 2.5s infinite;
 }
-
 .gift-face {
   position: relative;
   z-index: 1;
@@ -462,17 +390,13 @@ section { position: relative; }
   gap: 24px;
   transition: transform .3s;
 }
-
 .gift-box:hover .gift-face { transform: scale(1.04); }
-
 .gift-face svg { width: 100px; height: 100px; }
-
 .gift-face span {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 2px;
 }
-
 .gift-result {
   width: 100%;
   display: flex;
@@ -480,16 +404,13 @@ section { position: relative; }
   align-items: center;
   animation: fadeIn .7s ease both;
 }
-
 .gift-result[hidden], .gift-box[hidden] { display: none; }
-
 .phone-wrap {
   position: relative;
   width: min(300px,70vw);
   margin-bottom: 32px;
   perspective: 1000px;
 }
-
 .phone-glow {
   position: absolute;
   inset: -40px;
@@ -497,7 +418,6 @@ section { position: relative; }
   background: rgba(244,63,94,.3);
   filter: blur(60px);
 }
-
 .phone-svg {
   position: relative;
   z-index: 2;
@@ -506,12 +426,10 @@ section { position: relative; }
   filter: drop-shadow(0 25px 35px #0009);
   animation: phoneReveal 1.2s cubic-bezier(.2,.8,.2,1) both;
 }
-
 @keyframes phoneReveal {
   from { transform: rotateY(-180deg) scale(.6); opacity: 0; }
   to { transform: rotateY(0) scale(1); opacity: 1; }
 }
-
 .flower {
   position: absolute;
   z-index: 3;
@@ -519,24 +437,8 @@ section { position: relative; }
   filter: drop-shadow(0 4px 8px #0007);
   animation: fadeIn .8s 1s both;
 }
-
-.flower-right {
-  width: 80px;
-  height: 80px;
-  right: -40px;
-  top: -40px;
-  transform: rotate(45deg);
-}
-
-.flower-left {
-  width: 64px;
-  height: 64px;
-  left: -32px;
-  bottom: 40px;
-  color: white;
-  transform: rotate(-12deg);
-}
-
+.flower-right { width: 80px; height: 80px; right: -40px; top: -40px; transform: rotate(45deg); }
+.flower-left { width: 64px; height: 64px; left: -32px; bottom: 40px; color: white; transform: rotate(-12deg); }
 .gift-message {
   width: min(100%,512px);
   text-align: center;
@@ -547,7 +449,6 @@ section { position: relative; }
   border: 1px solid rgba(244,63,94,.3);
   animation: fadeIn 1s 1s both;
 }
-
 .gift-message h3 {
   font-size: clamp(1.4rem,4vw,1.9rem);
   font-weight: 700;
@@ -557,22 +458,18 @@ section { position: relative; }
   align-items: center;
   gap: 10px;
 }
-
 .gift-message h3 svg { color: #fb7185; flex-shrink: 0; }
-
 .gift-message .cherry {
   color: #fda4af;
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0 0 16px;
 }
-
 .gift-message p:last-child {
   color: rgba(255,255,255,.9);
   line-height: 1.8;
   margin: 0;
 }
-
 .confetti {
   position: absolute;
   z-index: 5;
@@ -584,17 +481,12 @@ section { position: relative; }
   pointer-events: none;
   animation: explode 1.5s ease-out forwards;
 }
-
 @keyframes explode {
   from { transform: translate(0,0) rotate(0); opacity: 1; }
-  to {
-    transform: translate(var(--x),var(--y)) rotate(var(--rot));
-    opacity: 0;
-  }
+  to { transform: translate(var(--x),var(--y)) rotate(var(--rot)); opacity: 0; }
 }
 
-.letter-section { padding: 96px 0; }
-
+/* CARTA */
 .letter {
   max-width: 768px;
   margin: auto;
@@ -606,30 +498,9 @@ section { position: relative; }
   border-radius: 40px;
   box-shadow: 0 25px 60px rgba(0,0,0,.3);
 }
-
-.letter-flower {
-  position: absolute;
-  pointer-events: none;
-}
-
-.letter-flower.top {
-  width: 96px;
-  height: 96px;
-  left: -32px;
-  top: -32px;
-  color: rgba(244,63,94,.3);
-  transform: rotate(-15deg);
-}
-
-.letter-flower.bottom {
-  width: 128px;
-  height: 128px;
-  right: -32px;
-  bottom: -40px;
-  color: rgba(236,72,153,.2);
-  transform: rotate(15deg);
-}
-
+.letter-flower { position: absolute; pointer-events: none; }
+.letter-flower.top { width: 96px; height: 96px; left: -32px; top: -32px; color: rgba(244,63,94,.3); transform: rotate(-15deg); }
+.letter-flower.bottom { width: 128px; height: 128px; right: -32px; bottom: -40px; color: rgba(236,72,153,.2); transform: rotate(15deg); }
 .letter h3 {
   font-family: 'Playfair Display',serif;
   font-size: 1.9rem;
@@ -638,16 +509,13 @@ section { position: relative; }
   text-align: center;
   margin: 0 0 32px;
 }
-
 .letter-copy {
   color: rgba(255,228,230,.85);
   font-size: 1.125rem;
   line-height: 1.9;
   font-weight: 300;
 }
-
-.letter-copy p { margin: 0 0 24px; }
-
+.letter-copy p { margin: 0 0 24px; text-align: justify; }
 .letter-copy .final-message {
   color: #fecdd3;
   font-weight: 500;
@@ -657,467 +525,352 @@ section { position: relative; }
   margin-bottom: 0;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-button:focus-visible {
-  outline: 2px solid #fda4af;
-  outline-offset: 5px;
-}
-
 @media (max-width: 850px) {
   .interest-grid { grid-template-columns: 1fr; max-width: 500px; }
-  .passion-content { min-height: 300px; }
   .passion-card p { opacity: 1; transform: none; }
   .letter { padding: 48px 32px; }
 }
-
 @media (max-width: 500px) {
-  main { width: calc(100% - 32px); padding-top: 28px; }
-  .hero { min-height: 78vh; }
-  .hero h1 { letter-spacing: -1px; }
-  .hero-description { font-size: 1rem; }
-  .scroll-hint { bottom: 0; }
-  .music-section, .interests, .gift-section, .letter-section { padding: 64px 0; }
-  .music-inner { padding: 20px; }
-  .passion-content { padding: 24px; }
+  main { width: calc(100% - 32px); }
   .gift-face { padding: 36px; }
   .letter { padding: 48px 24px; border-radius: 28px; }
   .letter h3 { font-size: 1.6rem; }
   .letter-copy { font-size: 1rem; }
   .flower-right { right: -20px; }
   .flower-left { left: -20px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
+  .nav-btn { width: 100%; justify-content: center; }
 }
 </style>
 </head>
-
 <body>
-
 <div class="background"></div>
 <div class="petal-container" id="petals"></div>
-
 <main>
-
-  <!-- HERO: PRESENTACIÓN -->
-  <section class="hero">
-    <div>
+  
+  <!-- VISTA 1: HERO -->
+  <div class="view active" id="view-1">
+    <section class="hero">
       <div class="hero-heart">
         <i data-lucide="heart"></i>
       </div>
-
       <h1 class="gradient-title">
         ¡Felices 3 Meses<br>Mi Amor!
       </h1>
-
       <p class="hero-description">
         Tres meses de risas, de aventuras, de tulípanes,
         lirios y de un amor que crece cada día con más fuerza.
       </p>
-    </div>
-
-    <div class="scroll-hint">
-      Desliza hacia abajo
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- REPRODUCTOR MUSICAL -->
-  <section class="music-section reveal">
-    <div class="music-card">
-      <div class="music-inner">
-
-        <h3 class="music-heading">
-          <i data-lucide="music" width="16"></i>
-          Soundtrack de Nuestro Amor
-        </h3>
-
-        <div class="album" id="album">
-          <i data-lucide="heart" class="album-heart" id="albumHeart"></i>
-          <div class="equalizer" id="equalizer" hidden>
-            <span></span><span></span><span></span>
-            <span></span><span></span>
-          </div>
-        </div>
-
-        <div id="songInfo">
-          <h4 class="song-title" id="songTitle">Typa Girl</h4>
-          <p class="song-artist" id="songArtist">BLACKPINK</p>
-        </div>
-
-        <div class="music-controls">
-          <button class="control-button" id="prevSong" aria-label="Canción anterior">
-            <i data-lucide="skip-back" width="24"></i>
-          </button>
-
-          <button class="control-button play-button" id="playSong" aria-label="Reproducir">
-            <i data-lucide="play" width="28"></i>
-          </button>
-
-          <button class="control-button" id="nextSong" aria-label="Siguiente canción">
-            <i data-lucide="skip-forward" width="24"></i>
-          </button>
-        </div>
-
-        <p id="musicStatus" class="text-xs text-rose-200/60 mt-4">
-          Selecciona reproducir para escuchar tu música.
-        </p>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PASIONES E INTERESES -->
-  <section class="interests">
-    <h2 class="section-title gradient-title reveal">
-      Tus Pasiones, Nuestro Mundo
-    </h2>
-
-    <div class="interest-grid">
-
-      <article class="passion-card violet-card reveal">
-        <div class="passion-content">
-          <i data-lucide="film" class="passion-icon"></i>
-          <h3>Cine &amp; Series GL</h3>
-          <h4>Con Becky Armstrong</h4>
-          <p>
-            Esas tardes viendo tus series favoritas, compartiendo
-            tu emoción por Becky Armstrong, son momentos de película
-            que quiero repetir siempre. (🎟️ Ticket VIP para
-            maratones eternas juntos).
-          </p>
-        </div>
-      </article>
-
-      <article class="passion-card orange-card reveal">
-        <div class="passion-content">
-          <i data-lucide="star" class="passion-icon"></i>
-          <h3>Aventuras Ninja</h3>
-          <h4>El Mundo de Boruto</h4>
-          <p>
-            Tu lado otaku me fascina. Cada batalla en Boruto y cada
-            momento épico que disfrutas, hace que admire aún más
-            la chica tan increíble y llena de contrastes que eres.
-            ¡Dattebasa!
-          </p>
-        </div>
-      </article>
-
-      <article class="passion-card green-card reveal">
-        <div class="passion-content">
-          <i data-lucide="dumbbell" class="passion-icon"></i>
-          <h3>Nuestro Gym Time</h3>
-          <h4>Fitness Couple</h4>
-          <p>
-            Admiro tu disciplina. Levantar pesas, esforzarnos y
-            vernos sudar juntos en el gym se ha convertido en mi
-            rutina favorita. Eres mi motivación más grande,
-            mi gym bro y mi amor.
-          </p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- REGALO SORPRESA -->
-  <section class="gift-section">
-    <h2 class="section-title gradient-title reveal">
-      Tu Sorpresa Especial
-    </h2>
-
-    <button class="gift-box" id="giftBox" aria-label="Abrir regalo">
-      <div class="gift-glow"></div>
-      <div class="gift-face">
-        <i data-lucide="gift"></i>
-        <span>TOCA PARA ABRIR</span>
-      </div>
+    </section>
+    <button class="nav-btn" onclick="nextView(2)">
+      Nuestra Canción <i data-lucide="arrow-right"></i>
     </button>
+  </div>
 
-    <div class="gift-result" id="giftResult" hidden>
+  <!-- VISTA 2: MÚSICA -->
+  <div class="view" id="view-2">
+    <section class="music-section">
+      <div class="music-card">
+        <div class="music-inner">
+          <h3 class="music-heading">
+            <i data-lucide="music" width="16"></i>
+            Soundtrack de Nuestro Amor
+          </h3>
+          <div class="album" id="album">
+            <i data-lucide="heart" class="album-heart" id="albumHeart"></i>
+            <div class="equalizer" id="equalizer" hidden>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div id="songInfo">
+            <h4 class="song-title" id="songTitle">Typa Girl</h4>
+            <p class="song-artist" id="songArtist">BLACKPINK</p>
+          </div>
+          <div class="music-controls">
+            <button class="control-button" id="prevSong" aria-label="Canción anterior">
+              <i data-lucide="skip-back" width="24"></i>
+            </button>
+            <button class="control-button play-button" id="playSong" aria-label="Reproducir">
+              <i data-lucide="play" width="28"></i>
+            </button>
+            <button class="control-button" id="nextSong" aria-label="Siguiente canción">
+              <i data-lucide="skip-forward" width="24"></i>
+            </button>
+          </div>
+          <p id="musicStatus" class="text-xs text-rose-200/60 mt-4">
+            Selecciona reproducir para escuchar tu música.
+          </p>
+        </div>
+      </div>
+    </section>
+    <button class="nav-btn" onclick="nextView(3)">
+      Tus Pasiones <i data-lucide="arrow-right"></i>
+    </button>
+  </div>
 
-      <div class="phone-wrap">
-        <div class="phone-glow"></div>
+  <!-- VISTA 3: PASIONES -->
+  <div class="view" id="view-3">
+    <section class="interests">
+      <h2 class="section-title gradient-title">
+        Tus Pasiones, Nuestro Mundo
+      </h2>
+      <div class="interest-grid">
+        <article class="passion-card violet-card">
+          <div class="passion-content">
+            <i data-lucide="film" class="passion-icon"></i>
+            <h3>Cine & Series GL</h3>
+            <h4>Con Becky Armstrong</h4>
+            <p>
+              Esas tardes viendo tus series favoritas, compartiendo
+              tu emoción por Becky Armstrong, son momentos de película
+              que quiero repetir siempre.
+            </p>
+          </div>
+        </article>
+        <article class="passion-card orange-card">
+          <div class="passion-content">
+            <i data-lucide="star" class="passion-icon"></i>
+            <h3>Aventuras Ninja</h3>
+            <h4>El Mundo de Boruto</h4>
+            <p>
+              Tu lado otaku me fascina. Cada batalla en Boruto y cada
+              momento épico que disfrutas, hace que admire aún más
+              la chica tan increíble que eres.
+            </p>
+          </div>
+        </article>
+        <article class="passion-card green-card">
+          <div class="passion-content">
+            <i data-lucide="dumbbell" class="passion-icon"></i>
+            <h3>Nuestro Gym Time</h3>
+            <h4>Fitness Couple</h4>
+            <p>
+              Levantar pesas, esforzarnos y
+              vernos sudar juntos en el gym es algo que extraño ahora
+              y ojala ahora en verano volvamos. Eres mi motivación más grande.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <button class="nav-btn" onclick="nextView(4)">
+      Ir a tu Sorpresa <i data-lucide="gift"></i>
+    </button>
+  </div>
 
-        <!-- TELÉFONO ILUSTRADO -->
-        <svg class="phone-svg" viewBox="0 0 300 600"
-             xmlns="http://www.w3.org/2000/svg"
-             role="img" aria-label="iPhone virtual color cherry">
+  <!-- VISTA 4: REGALO -->
+  <div class="view" id="view-4">
+    <section class="gift-section">
+      <h2 class="section-title gradient-title" id="giftTitle">
+        Tu Sorpresa Especial
+      </h2>
+      <button class="gift-box" id="giftBox" aria-label="Abrir regalo">
+        <div class="gift-glow"></div>
+        <div class="gift-face">
+          <i data-lucide="gift"></i>
+          <span>TOCA PARA ABRIR</span>
+        </div>
+      </button>
+      
+      <div class="gift-result" id="giftResult" hidden>
+        <div class="phone-wrap">
+          <div class="phone-glow"></div>
+          <svg class="phone-svg" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cherryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff4d6d"/>
+                <stop offset="50%" stop-color="#800f2f"/>
+                <stop offset="100%" stop-color="#590d22"/>
+              </linearGradient>
+              <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1a0b12"/>
+                <stop offset="100%" stop-color="#3d1424"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="280" height="580" rx="45" fill="url(#cherryGrad)" stroke="#4a0a18" stroke-width="4"/>
+            <rect x="18" y="18" width="264" height="564" rx="38" fill="url(#screenGrad)"/>
+            <rect x="95" y="30" width="110" height="30" rx="15" fill="#000"/>
+            <text x="150" y="120" fill="#fff" font-size="48" font-weight="bold" font-family="sans-serif" text-anchor="middle">10:09</text>
+            <text x="150" y="150" fill="#ffb3c6" font-size="16" font-family="sans-serif" text-anchor="middle">Viernes, 9 Octubre</text>
+            <path d="M150 226 C126 206 119 231 150 253 C181 231 174 206 150 226Z" fill="#ff4d6d"/>
+            <text x="150" y="290" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif" text-anchor="middle">Felices 3 Meses</text>
+            <text x="150" y="320" fill="#ffb3c6" font-size="14" font-family="sans-serif" text-anchor="middle">iPhone 18 Pro Max</text>
+            <text x="150" y="345" fill="#ffb3c6" font-size="14" font-family="sans-serif" text-anchor="middle">Color Cherry Exclusivo</text>
+            <g transform="translate(27,27)">
+              <rect x="0" y="0" width="100" height="100" rx="25" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".15"/>
+              <circle cx="30" cy="30" r="15" fill="#111" stroke="#333" stroke-width="2"/>
+              <circle cx="70" cy="30" r="15" fill="#111" stroke="#333" stroke-width="2"/>
+              <circle cx="30" cy="70" r="15" fill="#111" stroke="#333" stroke-width="2"/>
+              <circle cx="70" cy="70" r="8" fill="#222"/>
+            </g>
+            <rect x="115" y="558" width="70" height="5" rx="3" fill="#ffffff" fill-opacity=".6"/>
+          </svg>
+          <svg class="flower flower-right" viewBox="0 0 512 512" fill="currentColor">
+            <path d="M495 184C480 125 439 76 384 51C348 34 291 23 256 23S164 34 128 51C73 76 32 125 17 184C2 240 9 300 39 347C74 402 136 438 226 439V319C226 289 266 289 266 319V439C356 438 418 402 473 347C503 300 510 240 495 184Z"/>
+          </svg>
+          <svg class="flower flower-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C12 2 10 7 6 9C2 11 2 16 6 18C10 20 12 22 12 22C12 22 14 20 18 18C22 16 22 11 18 9C14 7 12 2 12 2Z"/>
+            <path d="M12 22V24M12 8C12 8 14.5 13 18.5 14M12 8C12 8 9.5 13 5.5 14"/>
+          </svg>
+        </div>
+        <div class="gift-message">
+          <h3><i data-lucide="sparkles"></i> iPhone 18 Pro Max <i data-lucide="sparkles"></i></h3>
+          <p class="cherry">Edición Exclusiva Color Cherry 🍒</p>
+          <p>
+            Mi amor, sé cuánto te encanta este color. Este es un adelanto
+            virtual de tu regalo sorpresa que pronto llegara. Mereces lo mejor, hoy y siempre.
+          </p>
+        </div>
+      </div>
+    </section>
+    <button class="nav-btn" id="nextToLetterBtn" onclick="nextView(5)" style="display: none;">
+      Leer mi Carta <i data-lucide="heart"></i>
+    </button>
+  </div>
 
-          <defs>
-            <linearGradient id="cherryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ff4d6d"/>
-              <stop offset="50%" stop-color="#800f2f"/>
-              <stop offset="100%" stop-color="#590d22"/>
-            </linearGradient>
-
-            <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#1a0b12"/>
-              <stop offset="100%" stop-color="#3d1424"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Cuerpo -->
-          <rect x="10" y="10" width="280" height="580" rx="45"
-                fill="url(#cherryGrad)" stroke="#4a0a18" stroke-width="4"/>
-
-          <!-- Pantalla -->
-          <rect x="18" y="18" width="264" height="564" rx="38"
-                fill="url(#screenGrad)"/>
-
-          <!-- Isla dinámica -->
-          <rect x="95" y="30" width="110" height="30" rx="15" fill="#000"/>
-
-          <!-- Hora y fecha -->
-          <text x="150" y="120" fill="#fff" font-size="48"
-                font-weight="bold" font-family="sans-serif" text-anchor="middle">10:09</text>
-
-          <text x="150" y="150" fill="#ffb3c6" font-size="16"
-                font-family="sans-serif" text-anchor="middle">Viernes, 9 Octubre</text>
-
-          <!-- Corazón -->
-          <path d="M150 226
-                   C126 206 119 231 150 253
-                   C181 231 174 206 150 226Z"
-                fill="#ff4d6d"/>
-
-          <!-- Mensaje -->
-          <text x="150" y="290" fill="#fff" font-size="20"
-                font-weight="bold" font-family="sans-serif" text-anchor="middle">Felices 3 Meses</text>
-
-          <text x="150" y="320" fill="#ffb3c6" font-size="14"
-                font-family="sans-serif" text-anchor="middle">iPhone 18 Pro Max</text>
-
-          <text x="150" y="345" fill="#ffb3c6" font-size="14"
-                font-family="sans-serif" text-anchor="middle">Color Cherry Exclusivo</text>
-
-          <!-- Módulo de cámaras decorativo -->
-          <g transform="translate(27,27)">
-            <rect x="0" y="0" width="100" height="100" rx="25"
-                  fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".15"/>
-
-            <circle cx="30" cy="30" r="15" fill="#111" stroke="#333" stroke-width="2"/>
-            <circle cx="70" cy="30" r="15" fill="#111" stroke="#333" stroke-width="2"/>
-            <circle cx="30" cy="70" r="15" fill="#111" stroke="#333" stroke-width="2"/>
-            <circle cx="70" cy="70" r="8" fill="#222"/>
-          </g>
-
-          <!-- Botón inferior decorativo -->
-          <rect x="115" y="558" width="70" height="5" rx="3" fill="#ffffff" fill-opacity=".6"/>
-        </svg>
-
-        <!-- Flores decorativas -->
-        <svg class="flower flower-right" viewBox="0 0 512 512" fill="currentColor"
-             aria-hidden="true">
+  <!-- VISTA 5: CARTA -->
+  <div class="view" id="view-5">
+    <section class="letter-section">
+      <div class="letter">
+        <svg class="letter-flower top" viewBox="0 0 512 512" fill="currentColor">
           <path d="M495 184C480 125 439 76 384 51C348 34 291 23 256 23S164 34 128 51C73 76 32 125 17 184C2 240 9 300 39 347C74 402 136 438 226 439V319C226 289 266 289 266 319V439C356 438 418 402 473 347C503 300 510 240 495 184Z"/>
         </svg>
-
-        <svg class="flower flower-left" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <svg class="letter-flower bottom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M12 2C12 2 10 7 6 9C2 11 2 16 6 18C10 20 12 22 12 22C12 22 14 20 18 18C22 16 22 11 18 9C14 7 12 2 12 2Z"/>
           <path d="M12 22V24M12 8C12 8 14.5 13 18.5 14M12 8C12 8 9.5 13 5.5 14"/>
         </svg>
+        <h3>Para la niña de mis ojos...</h3>
+        <div class="letter-copy">
+          <p>
+            Bueno hoy cumplimos 3 meses. Parece que fue ayer cuando empezamos
+            a intentarlo, pero al mismo tiempo siento que te
+            cada dia que pasa te conzco mas.
+          </p>
+          <p>
+            Quería hacerte algo especial, algo que reuniera todo lo que
+            te encanta: desde escuchar a BLACKPINK, BABYMONSTER y Maria
+            Becerra, hasta nuestras charlas sobre series GL, Boruto,
+            y por supuesto, y cuando pasabamos tiempo en el gym.
+          </p>
+          <p>
+            Tus flores favoritas (tulipanes y lirios) adornan este regalo,
+            al igual que el color Cherry que tanto te gusta, plasmado
+            en ese iPhone 18 Pro Max virtual que diseñé solo para verte sonreír.
+          </p>
+          <p class="final-message">
+            Te amo con todo mi corazón. Por muchos meses y años más juntos. ❤️
+          </p>
+        </div>
       </div>
-
-      <div class="gift-message">
-        <h3>
-          <i data-lucide="sparkles"></i>
-          iPhone 18 Pro Max
-          <i data-lucide="sparkles"></i>
-        </h3>
-
-        <p class="cherry">Edición Exclusiva Color Cherry 🍒</p>
-
-        <p>
-          Mi amor, sé cuánto te encanta este color. Este es un adelanto
-          virtual de tu regalo sorpresa. Mereces lo mejor, hoy y siempre.
-          ¡Felices 3 meses!
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CARTA DE AMOR -->
-  <section class="letter-section">
-    <div class="letter reveal">
-
-      <svg class="letter-flower top" viewBox="0 0 512 512"
-           fill="currentColor" aria-hidden="true">
-        <path d="M495 184C480 125 439 76 384 51C348 34 291 23 256 23S164 34 128 51C73 76 32 125 17 184C2 240 9 300 39 347C74 402 136 438 226 439V319C226 289 266 289 266 319V439C356 438 418 402 473 347C503 300 510 240 495 184Z"/>
-      </svg>
-
-      <svg class="letter-flower bottom" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="1.5"
-           aria-hidden="true">
-        <path d="M12 2C12 2 10 7 6 9C2 11 2 16 6 18C10 20 12 22 12 22C12 22 14 20 18 18C22 16 22 11 18 9C14 7 12 2 12 2Z"/>
-        <path d="M12 22V24M12 8C12 8 14.5 13 18.5 14M12 8C12 8 9.5 13 5.5 14"/>
-      </svg>
-
-      <h3>Para la niña de mis ojos...</h3>
-
-      <div class="letter-copy">
-        <p>
-          Hoy cumplimos 3 meses. Parece que fue ayer cuando empezamos
-          esta hermosa aventura, pero al mismo tiempo siento que te
-          conozco de toda la vida.
-        </p>
-
-        <p>
-          Quería hacerte algo especial, algo que reuniera todo lo que
-          te encanta: desde escuchar a BLACKPINK, BABYMONSTER y Maria
-          Becerra, hasta nuestras charlas sobre series GL, Boruto,
-          y por supuesto, nuestro inquebrantable tiempo en el gym.
-        </p>
-
-        <p>
-          Tus flores favoritas (tulipanes y lirios) adornan este regalo,
-          al igual que el color Cherry que tanto te gusta, plasmado
-          en ese iPhone 18 Pro Max virtual que diseñé solo para verte sonreír.
-        </p>
-
-        <p class="final-message">
-          Te amo con todo mi corazón. Por muchos meses y años más juntos. ❤️
-        </p>
-      </div>
-
-    </div>
-  </section>
+    </section>
+  </div>
 
 </main>
 
 <script>
-/* =========================================================
-   ICONOS
-========================================================= */
+/* INICIALIZAR ICONOS */
 function refreshIcons() {
-  if (window.lucide) {
-    lucide.createIcons();
-  }
+  if (window.lucide) { lucide.createIcons(); }
 }
 refreshIcons();
 
-/* =========================================================
-   FLORES Y PÉTALOS FLOTANTES
-========================================================= */
+/* SISTEMA DE NAVEGACIÓN (VISTAS) */
+function nextView(viewNumber) {
+  const currentView = document.querySelector('.view.active');
+  const nextView = document.getElementById(`view-${viewNumber}`);
+  
+  if (currentView && nextView) {
+    // Si estamos saliendo de la vista de música, detenerla
+    if (currentView.id === 'view-2' && viewNumber !== 2) {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        renderSong();
+      }
+    }
+
+    currentView.style.opacity = '0';
+    
+    setTimeout(() => {
+      currentView.classList.remove('active');
+      nextView.classList.add('active');
+      
+      setTimeout(() => {
+        nextView.style.opacity = '1';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        refreshIcons(); 
+      }, 50);
+    }, 500); 
+  }
+}
+
+/* FLORES, CORAZONES Y PÉTALOS FLOTANTES */
 const petalContainer = document.getElementById('petals');
-
 function createPetals() {
-  const total = window.innerWidth < 600 ? 16 : 30;
-
+  const total = window.innerWidth < 600 ? 20 : 35;
   petalContainer.innerHTML = '';
-
   for (let i = 0; i < total; i++) {
     const petal = document.createElement('div');
     petal.className = 'petal';
-
-    const isTulip = i % 2 === 0;
+    
+    const type = i % 3; // 0 = Tulipán, 1 = Lirio, 2 = Corazón
     const size = 24 + Math.random() * 20;
     const duration = 10 + Math.random() * 10;
     const delay = Math.random() * -20;
     const drift = (Math.random() - .5) * 100;
     const rotation = Math.random() * 360;
-
+    
     petal.style.left = Math.random() * 100 + '%';
     petal.style.fontSize = size + 'px';
     petal.style.animationDuration = duration + 's';
     petal.style.animationDelay = delay + 's';
     petal.style.setProperty('--drift', drift + 'vw');
-    petal.style.color = Math.random() > .5
-      ? 'rgba(244,63,94,.30)'
-      : 'rgba(251,113,133,.30)';
-
+    petal.style.color = Math.random() > .5 ? 'rgba(244,63,94,.30)' : 'rgba(251,113,133,.30)';
     petal.style.transform = `rotate(${rotation}deg)`;
-
-    if (isTulip) {
-      petal.innerHTML = `
-        <svg width="${size}" height="${size}" viewBox="0 0 512 512"
-             fill="currentColor" aria-hidden="true">
-          <path d="M495 184C480 125 439 76 384 51C348 34 291 23 256 23S164 34 128 51C73 76 32 125 17 184C2 240 9 300 39 347C74 402 136 438 226 439V319C226 289 266 289 266 319V439C356 438 418 402 473 347C503 300 510 240 495 184Z"/>
-        </svg>`;
+    
+    if (type === 0) {
+      // Tulipán
+      petal.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 512 512" fill="currentColor"><path d="M495 184C480 125 439 76 384 51C348 34 291 23 256 23S164 34 128 51C73 76 32 125 17 184C2 240 9 300 39 347C74 402 136 438 226 439V319C226 289 266 289 266 319V439C356 438 418 402 473 347C503 300 510 240 495 184Z"/></svg>`;
+    } else if (type === 1) {
+      // Lirio
+      petal.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C12 2 10 7 6 9C2 11 2 16 6 18C10 20 12 22 12 22C12 22 14 20 18 18C22 16 22 11 18 9C14 7 12 2 12 2Z"/><path d="M12 22V24M12 8C12 8 14.5 13 18.5 14M12 8C12 8 9.5 13 5.5 14"/></svg>`;
     } else {
-      petal.innerHTML = `
-        <svg width="${size}" height="${size}" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.5"
-             aria-hidden="true">
-          <path d="M12 2C12 2 10 7 6 9C2 11 2 16 6 18C10 20 12 22 12 22C12 22 14 20 18 18C22 16 22 11 18 9C14 7 12 2 12 2Z"/>
-          <path d="M12 22V24M12 8C12 8 14.5 13 18.5 14M12 8C12 8 9.5 13 5.5 14"/>
-        </svg>`;
+      // Corazón
+      petal.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
     }
-
+    
     petalContainer.appendChild(petal);
   }
 }
-
 createPetals();
-
 let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(createPetals, 200);
 });
 
-/* =========================================================
-   APARICIÓN DE SECCIONES AL DESPLAZARSE
-========================================================= */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(element => {
-  revealObserver.observe(element);
-});
-
-/* =========================================================
-   REPRODUCTOR MUSICAL
-   Los botones cambian la canción seleccionada.
-   Para escuchar audio real, añade los archivos de música.
-========================================================= */
+/* REPRODUCTOR MUSICAL */
 const playlist = [
-  {
-    title: 'Typa Girl',
-    artist: 'BLACKPINK',
-    color: 'linear-gradient(135deg,#ec4899,#000000)',
-    audio: 'musica/typa-girl.mp3'
+  { 
+    title: 'Typa Girl', 
+    artist: 'BLACKPINK', 
+    color: 'linear-gradient(135deg,#ec4899,#000000)', 
+    audio: 'C:\\Users\\Sebastian\\Downloads\\BLACKPINK - ‘Typa Girl’ (Official Audio) - BLACKPINK.mp3'
   },
-  {
-    title: 'SHEESH',
-    artist: 'BABYMONSTER',
-    color: 'linear-gradient(135deg,#dc2626,#7f1d1d)',
-    audio: 'musica/sheesh.mp3'
+  { 
+    title: 'SHEESH', 
+    artist: 'BABYMONSTER', 
+    color: 'linear-gradient(135deg,#dc2626,#7f1d1d)', 
+  audio: 'C:\\Users\\Sebastian\\Downloads\\BABYMONSTER - ‘SHEESH’ M_V - BABYMONSTER.mp3'
   },
-  {
-    title: 'Corazón Vacío',
-    artist: 'Maria Becerra',
-    color: 'linear-gradient(135deg,#a855f7,#f43f5e)',
-    audio: 'musica/corazon-vacio.mp3'
+  { 
+    title: 'Corazón Vacío', 
+    artist: 'Maria Becerra', 
+    color: 'linear-gradient(135deg,#a855f7,#f43f5e)', 
+    audio: 'C:\\Users\\Sebastian\\Downloads\\Maria Becerra x XROSS - CORAZÓN VACÍO  MAITE Parte I - Maria Becerra.mp3'
   }
 ];
-
 let currentSong = 0;
 let isPlaying = false;
-
 const album = document.getElementById('album');
 const songTitle = document.getElementById('songTitle');
 const songArtist = document.getElementById('songArtist');
@@ -1125,17 +878,14 @@ const playButton = document.getElementById('playSong');
 const musicStatus = document.getElementById('musicStatus');
 const equalizer = document.getElementById('equalizer');
 const albumHeart = document.getElementById('albumHeart');
-
 const audio = new Audio();
 audio.preload = 'none';
 
 function renderSong() {
   const song = playlist[currentSong];
-
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
   album.style.background = song.color;
-
   if (isPlaying) {
     equalizer.hidden = false;
     albumHeart.hidden = true;
@@ -1147,17 +897,14 @@ function renderSong() {
     playButton.innerHTML = '<i data-lucide="play" width="28"></i>';
     musicStatus.textContent = 'Selecciona reproducir para escuchar tu música.';
   }
-
   refreshIcons();
 }
 
 async function playCurrentSong() {
   const song = playlist[currentSong];
-
   audio.pause();
   audio.src = song.audio;
   audio.currentTime = 0;
-
   try {
     await audio.play();
     isPlaying = true;
@@ -1165,9 +912,7 @@ async function playCurrentSong() {
   } catch (error) {
     isPlaying = false;
     renderSong();
-
-    musicStatus.textContent =
-      'Añade el archivo ' + song.audio + ' para escuchar esta canción.';
+    musicStatus.textContent = 'Añade el archivo de audio correcto en la misma carpeta.';
   }
 }
 
@@ -1180,94 +925,50 @@ playButton.addEventListener('click', async () => {
     await playCurrentSong();
   }
 });
-
 document.getElementById('nextSong').addEventListener('click', () => {
   currentSong = (currentSong + 1) % playlist.length;
-
-  if (isPlaying) {
-    playCurrentSong();
-  } else {
-    renderSong();
-  }
+  if (isPlaying) { playCurrentSong(); } else { renderSong(); }
 });
-
 document.getElementById('prevSong').addEventListener('click', () => {
   currentSong = (currentSong - 1 + playlist.length) % playlist.length;
-
-  if (isPlaying) {
-    playCurrentSong();
-  } else {
-    renderSong();
-  }
+  if (isPlaying) { playCurrentSong(); } else { renderSong(); }
 });
-
 audio.addEventListener('ended', () => {
   currentSong = (currentSong + 1) % playlist.length;
   playCurrentSong();
 });
 
-audio.addEventListener('error', () => {
-  isPlaying = false;
-  renderSong();
-  musicStatus.textContent =
-    'No se encontró el audio. Revisa la carpeta musica.';
-});
-
 renderSong();
 
-/* =========================================================
-   REGALO INTERACTIVO
-========================================================= */
+/* REGALO INTERACTIVO */
 const giftBox = document.getElementById('giftBox');
 const giftResult = document.getElementById('giftResult');
+const nextToLetterBtn = document.getElementById('nextToLetterBtn');
 
 function createConfetti() {
   const colors = ['#f43f5e','#f9a8d4','#ffffff','#d946ef'];
-
   for (let i = 0; i < 40; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
-
-    confetti.style.background =
-      colors[Math.floor(Math.random() * colors.length)];
-
-    confetti.style.setProperty('--x',
-      ((Math.random() - .5) * 400) + 'px');
-
-    confetti.style.setProperty('--y',
-      (((Math.random() - .5) * 400) - 200) + 'px');
-
-    confetti.style.setProperty('--rot',
-      (Math.random() * 720 - 360) + 'deg');
-
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.setProperty('--x', ((Math.random() - .5) * 400) + 'px');
+    confetti.style.setProperty('--y', (((Math.random() - .5) * 400) - 200) + 'px');
+    confetti.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
     giftResult.appendChild(confetti);
-
     setTimeout(() => confetti.remove(), 1700);
   }
 }
 
 giftBox.addEventListener('click', () => {
   giftBox.hidden = true;
+  document.getElementById('giftTitle').hidden = true;
   giftResult.hidden = false;
-
-  if ('vibrate' in navigator) {
-    navigator.vibrate([200, 100, 200]);
-  }
-
+  nextToLetterBtn.style.display = 'inline-flex';
+  
+  if ('vibrate' in navigator) { navigator.vibrate([200, 100, 200]); }
   createConfetti();
   refreshIcons();
-
-  giftResult.scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
 });
-
-/* =========================================================
-   INICIO
-========================================================= */
-console.log('Página de aniversario cargada correctamente ❤️');
 </script>
-
 </body>
 </html>
